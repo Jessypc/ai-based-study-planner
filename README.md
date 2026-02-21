@@ -2,27 +2,48 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [ai-based study planner] 🎯
+#  study planner 🎯
 
 ## Basic Details
 
-### Team Name: [jesiss]
+### Team Name: jesiss
 
 ### Team Members
-- Member 1: [Jessy PC] - [College of Engineering Munnar]
-- Member 2: [Issa Suresh] - [College of Engineering Munnar]
+- Member 1: Jessy PC - College of Engineering Munnar
+- Member 2: Issa Suresh - College of Engineering Munnar
 
 ### Hosted Project Link
-[mention your project hosted link here]
+https://jessypc.github.io/ai-based-study-planner/
 
 ### Project Description
-[2-3 lines about what your project does]
+Our study planning project is designed to help students organize their academic goals, manage their time effectively, and stay consistent with their learning schedule. It provides structured plans, priority setting, and progress tracking to improve productivity and reduce last-minute stress. The project encourages smart goal setting, balanced study sessions, and regular revision strategies. Overall, it aims to build better study habits and support long-term academic success.
 
 ### The Problem statement
-[What problem are you solving?]
+Poor time management – Many students struggle to plan their study hours effectively and often waste time or cram at the last minute.
+
+Lack of organization – Assignments, exams, and deadlines can feel overwhelming without a clear structure in one place.
+
+Procrastination – Students delay tasks because they don’t have a clear, manageable study plan.
+
+Difficulty tracking progress – Without visible progress tracking, it’s hard to stay motivated and measure improvement.
+
+Unbalanced study schedules – Students may focus too much on one subject while neglecting others
 
 ### The Solution
-[How are you solving it?]
+Time management → Smart scheduling system
+Let users enter subjects, deadlines, and available hours. The app automatically creates a balanced daily/weekly timetable.
+
+Lack of organization → All-in-one dashboard
+Provide one central place for assignments, exams, notes, and reminders so students don’t have to use multiple apps.
+
+Procrastination → Task breakdown & reminders
+Break big tasks into smaller steps with deadlines and send motivational reminders or streak rewards to keep students consistent.
+
+Difficulty tracking progress → Progress tracker & analytics
+Show visual progress bars, completed tasks, study hours, and performance trends to keep students motivated.
+
+Unbalanced schedules → Subject balance alerts
+Track study time per subject and notify users if one subject is being ignored.
 
 ---
 
@@ -31,25 +52,240 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: HTML — structure and markup (index.html, public.html)
+CSS — styling and animations (style.css)
+JavaScript — both frontend logic (script.js) and backend server (server.js)
+- Frameworks used: Frontend
+
+Plain HTML5
+Vanilla JavaScript (no framework)
+Pure CSS3 with custom properties (CSS variables)
+
+Backend
+
+Node.js with Express.js
+- Libraries used: CSS Library
+
+Google Fonts — imports Inter and Outfit font families via @import url('https://fonts.googleapis.com...')
+
+Backend Library
+
+Express.js — used in server.js for creating the server, handling routes, and serving static files (require("express"))
+Path — Node.js built-in module used for file path handling (require("path"))
+- Tools used:  localStorage — saves and loads the generated study plan between sessions
+Fetch API — used in public.html version to make POST requests to /plan endpoint
+DOM API — for manipulating HTML elements dynamically
 
 **For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
+- Main components: 1. Input Component
+
+Takes user inputs — subjects, days, hours, and learning profile
+Validates that all fields are filled before generating
+
+2. Weight Calculation Engine
+
+Core logic of the entire program
+getModeWeights() classifies every subject as Math-based or Theory-based
+Assigns a numerical weight to each subject based on difficulty and selected mode
+Higher weight = more study hours allocated
+
+3. Hour Distribution Algorithm
+
+Calculates total available hours (days × hours per day)
+Divides hours proportionally based on subject weights
+Formula: unitHour = totalHours / totalWeight then hoursToStudy = unitHour × subjectWeight
+
+4. Intensity Classifier
+
+Labels each subject as Focused, High, or Moderate based on its weight value
+weight ≥ 2.0 → Focused
+weight ≥ 1.4 → High
+below 1.4 → Moderate
+
+5. Plan Renderer
+
+renderPlan() dynamically builds and displays study cards
+Applies staggered animations for smooth card appearance
+
+6. Persistence Layer
+
+Saves generated plan to localStorage
+Auto-loads last plan on page refresh
+
+7. Express API Server
+
+POST /plan endpoint replicates the same logic on the backend side
+Serves static files to the browser
+
+The Weight Calculation Engine + Hour Distribution Algorithm together form the true core of the program — everything else supports or displays their output. Sonnet 4.6
+- Specifications: 1. Input Component
+
+Takes user inputs — subjects, days, hours, and learning profile
+Validates that all fields are filled before generating
+
+2. Weight Calculation Engine
+
+Core logic of the entire program
+getModeWeights() classifies every subject as Math-based or Theory-based
+Assigns a numerical weight to each subject based on difficulty and selected mode
+Higher weight = more study hours allocated
+
+3. Hour Distribution Algorithm
+
+Calculates total available hours (days × hours per day)
+Divides hours proportionally based on subject weights
+Formula: unitHour = totalHours / totalWeight then hoursToStudy = unitHour × subjectWeight
+
+4. Intensity Classifier
+
+Labels each subject as Focused, High, or Moderate based on its weight value
+weight ≥ 2.0 → Focused
+weight ≥ 1.4 → High
+below 1.4 → Moderate
+
+5. Plan Renderer
+
+renderPlan() dynamically builds and displays study cards
+Applies staggered animations for smooth card appearance
+
+6. Persistence Layer
+
+Saves generated plan to localStorage
+Auto-loads last plan on page refresh
+
+7. Express API Server
+
+POST /plan endpoint replicates the same logic on the backend side
+Serves static files to the browser
+
+The Weight Calculation Engine + Hour Distribution Algorithm together form the true core of the program — everything else supports or displays their output.technical specification of the program10:39 AMBased on your project files, here are the complete technical specifications:
+
+1. Project Overview
+
+Name: AI Study Planner
+Type: Full Stack Web Application
+Architecture: Client-Server (Frontend + Backend)
+Execution Mode: Primarily Client-Side (localStorage based, no server call needed)
+
+
+2. Technology Stack
+LayerTechnologyFrontend MarkupHTML5Frontend StylingCSS3Frontend LogicVanilla JavaScript (ES6+)Backend RuntimeNode.jsBackend FrameworkExpress.jsFont LibraryGoogle FontsStorageBrowser localStorage
+
+3. Frontend Specifications
+
+Layout: CSS Grid (2-column dashboard, responsive)
+Design Style: Glassmorphism
+Responsive Breakpoint: 968px (switches to single column)
+Fonts: Inter (body), Outfit (headings)
+Color Scheme: Dark theme using CSS custom properties
+Animations: fadeInUp, spin, slideUp (pure CSS keyframes)
+Input Fields: subjects (text), days (number), hours (number), studyMode (select)
+
+
+4. Algorithm Specifications
+Subject Classification
+CategorySubjectsMath-basedMath, Physics, Calculus, Programming, Algorithms, Engineering, Statistics, Economics, Geometry, Trigonometry, AlgebraTheory-basedChemistry, Biology, History, English, Geography, Literature, Sociology, Psychology, Civics, Philosophy, Arts
+Learning Profile Weights
+ModeMath SubjectTheory SubjectOtherBalanced1.61.11.0Theory Expert2.20.71.2Math Expert0.72.21.2Steady1.01.01.0
+Intensity Classification
+Weight ValueIntensity Label≥ 2.0Focused≥ 1.4High< 1.4Moderate
+Hour Distribution Formula
+totalHours = days × hoursPerDay
+unitHour = totalHours / totalWeight
+subjectHours = unitHour × subjectWeight
+
+5. Backend Specifications
+
+Runtime: Node.js
+Framework: Express.js
+Port: 3000
+Endpoint: POST /plan
+Request Body: { subjects[], days, hoursPerDay }
+Response: { totalDays, totalHours, plan[] }
+Error Handling: 400 (bad request), 500 (server error)
+Static File Serving: Express static middleware
+
+
+6. Data Flow
+User Input
+    ↓
+Validation Check
+    ↓
+Subject Classification (Math / Theory / Other)
+    ↓
+Weight Assignment (based on Learning Profile)
+    ↓
+Hour Distribution Algorithm
+    ↓
+Intensity Classification
+    ↓
+Plan Rendered to UI
+    ↓
+Saved to localStorage
+
+7. Storage Specification
+
+Type: Browser localStorage
+Key: studyPlan
+Value: JSON stringified plan array
+Behavior: Auto-loads on page refresh
+
+
+8. Performance Characteristics
+
+No external API calls (fully offline capable)
+1000ms artificial delay for UX loading state
+Staggered card render (100ms per card)
+Lightweight — no framework overhead
+
+
+9. File Structure
+project/
+├── index.html      → Main UI
+├── public.html     → Alternate simple UI
+├── style.css       → All styling
+├── script.js       → Frontend logic & algorithm
+└── server.js       → Express backend server
+
+10. Browser Compatibility
+
+Supports all modern browsers (Chrome, Firefox, Edge, Safari)
+Uses standard ES6+ features (async/await, arrow functions, template literals)
+CSS backdrop-filter (glassmorphism) requires modern browser support
+ Sonnet 4.6
+- Tools required: #ToolPurpose1Node.jsRun the backend server2NPMInstall packages3Express.jsBackend framework4Web BrowserRun and view the app5Code EditorWrite and edit code
 
 ---
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: Smart Hour Distribution
+
+Automatically divides total study hours across all subjects
+Based on formula: totalHours = days × hoursPerDay
+Each subject gets hours proportional to its difficulty weight
+Ensures no subject is over or under allocated
+- Feature 2:  Learning Profile Selection
+
+4 personalized study modes to choose from
+Balanced — smart distribution for all subjects
+Theory Expert — allocates more hours to Math based subjects
+Math Expert — allocates more hours to Theory based subjects
+Steady — equal hours for every subject
+- Feature 3:  Subject Intensity Classification
+
+Automatically labels each subject based on difficulty weight
+Focused — weight ≥ 2.0 (needs maximum attention)
+High — weight ≥ 1.4 (needs extra effort)
+Moderate — weight < 1.4 (normal pace)
+Helps student prioritize which subject needs more focus
+- Feature 4:  Auto Save and Reload
+
+Generated plan is automatically saved to browser localStorage
+Plan is restored automatically when page is refreshed
+No data is lost between sessions
+Works completely offline without any internet connection
 
 ---
 
