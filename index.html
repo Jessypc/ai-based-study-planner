@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Planner | Plan Smarter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 AI Study Planner</h1>
+            <p class="subtitle">Personalized learning paths for peak performance.</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Input Section -->
+            <section class="glass-card left-panel">
+                <h2>Plan Your Study</h2>
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label for="subjects">Subjects</label>
+                    <input type="text" id="subjects" placeholder="Biology, Calculus, History"
+                        title="Comma-separated subjects">
+                </div>
+
+                <div class="form-group">
+                    <label for="days">Days to Prepare</label>
+                    <input type="number" id="days" placeholder="14" min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="hours">Available Hours Per Day</label>
+                    <input type="number" id="hours" placeholder="4" min="1" max="24">
+                </div>
+
+                <div class="form-group">
+                    <label for="studyMode">Your Learning Profile</label>
+                    <select id="studyMode">
+                        <option value="balanced">⚖️ Balanced (Recommended)</option>
+                        <option value="theoryExpert">🚀 Fast Theory Learner (More help with Math)</option>
+                        <option value="mathExpert">🔢 Math Specialist (More help with Theory)</option>
+                        <option value="steady">🐢 Equal Pace (Same for all)</option>
+                    </select>
+                </div>
+
+                <button onclick="generatePlan()" id="generateBtn">Generate Smart Plan</button>
+            </section>
+
+            <!-- Results Section -->
+            <section class="glass-card right-panel" id="result-section">
+                <h2>Your Interactive Plan</h2>
+                <div id="result" class="plan-container">
+                    <div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 3rem;">
+                        <p>Fill in your details and click generate to see your roadmap.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

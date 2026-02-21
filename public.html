@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+    <h1>📚 AI Study Planner</h1>
+    <p class="subtitle">Plan smarter. Study better.</p>
+
+    <div class="form-group">
+        <label>Subjects (comma separated)</label>
+        <input type="text" id="subjects" placeholder="Math, Physics, English">
+    </div>
+
+    <div class="form-group">
+        <label>Number of Days</label>
+        <input type="number" id="days" placeholder="10">
+    </div>
+
+    <div class="form-group">
+        <label>Study Hours Per Day</label>
+        <input type="number" id="hours" placeholder="4">
+    </div>
+
+    <button onclick="generatePlan()">Generate Study Plan 🚀</button>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+  background-size: 40px 40px;
+  animation: move 20s linear infinite;
+}
+
+@keyframes move {
+  from { transform: translate(0,0); }
+  to { transform: translate(-50px,-50px); }
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  color: white;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  font-size: 13px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #ff7eb3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #ff4f9a;
+  transform: scale(1.05);
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  animation: slideUp 0.5s ease forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+async function generatePlan() {
+  const subjectsInput = document.getElementById("subjects").value;
+  const days = document.getElementById("days").value;
+  const hours = document.getElementById("hours").value;
+  const resultDiv = document.getElementById("result");
+
+  if (!subjectsInput || !days || !hours) {
+    resultDiv.innerHTML = "<p>Please fill all fields ⚠️</p>";
+    return;
+  }
+
+  const subjectsArray = subjectsInput.split(",");
+
+  resultDiv.innerHTML = "Generating plan... ⏳";
+
+  const response = await fetch("/plan", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      subjects: subjectsArray,
+      days: Number(days),
+      hoursPerDay: Number(hours)
+    })
+  });
+
+  const data = await response.json();
+url
+
+  resultDiv.innerHTML = "<h3>Your Study Plan 📖</h3>";
+
+  data.plan.forEach((item, index) => {
+    setTimeout(() => {
+      resultDiv.innerHTML += `url
+        <div class="card">
+          <strong>${item.subject}</strong><br>
+          Study for <b>${item.hoursToStudy}</b> hours
+        </div>
+      `;
+    }, index * 200);
+  });
+        <label>Number of Days</label>
+    <link rel="stylesheet" href="s
+    
+    
+    tyle.css">
+}
+
+
+
